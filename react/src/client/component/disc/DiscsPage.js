@@ -7,17 +7,10 @@ import Disc from './DiscComponent';
 class DiscsPage extends Component { 
     constructor(props, context) {
         super(props, context);
-
-        this.state = {
-          discs: Object.assign({}, this.props.data.discs)
-        };
-
-        console.log(this.state);
     }
     
     render() {   
         const discs =   this.props.data.discs;
-        console.log(this.props.data.loading);
         
         return (
             <div>

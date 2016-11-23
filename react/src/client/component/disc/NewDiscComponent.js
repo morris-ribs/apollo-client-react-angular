@@ -41,8 +41,6 @@ class NewDiscComponent extends Component {
             year: this.state.year        
         };
 
-        console.log(this.state);
-
         // call the mutation in order to create the new disc
         this.props.mutate({ variables: { input: newDisc } })
             .then(({ data }) => {
@@ -51,7 +49,11 @@ class NewDiscComponent extends Component {
                 console.log('there was an error sending the query', error);
             });      
         
-        
+        // reset values
+        this.refs.newId.value = "";
+        this.refs.newTitle.value = "";
+        this.refs.newArtist.value = "";
+        this.refs.newYear.value = "";
         this.setState({id:"", title:"", artist:"", year:""});
     }    
     

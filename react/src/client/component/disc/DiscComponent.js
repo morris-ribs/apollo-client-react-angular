@@ -7,7 +7,7 @@ class DiscComponent extends Component {
             return (
                 <ul>
                     {this.props.discs.map(disc => 
-                        <li>{disc.title} - {disc.artist} ({disc.year})</li>
+                        <li key={disc.id}>{disc.title} - {disc.artist} ({disc.year})</li>
                     )}
                 </ul>
             );

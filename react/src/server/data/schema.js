@@ -1,12 +1,12 @@
 import graphqlHTTP from 'express-graphql';
-import { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from 'graphql';
+import { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList, GraphQLInputObjectType, GraphQLNonNull } from 'graphql';
 import DiscsData from './discsdata';
 
 /* eslint-disable no-console */
-let discType = new GraphQLObjectType({
+const discType = new GraphQLObjectType({
   name: "Disc",
   description: "Example of a disc album",
-  fields: {
+  fields: () => ({
    title: {
      type: GraphQLString,
      description: "The title of the album",
@@ -23,7 +23,7 @@ let discType = new GraphQLObjectType({
      type: GraphQLInt,
      description: "ID of this Goldberg"
    }
- }
+ })
 });
 
 let queryByIdType = new GraphQLObjectType({
@@ -57,9 +57,48 @@ let queryType = new GraphQLObjectType({
   }
 });
 
+// Mutations
+let CreateDiscType = new GraphQLInputObjectType({
+  name: 'CreateDisc',
+  fields: () => ({ // description of the fields { name_of_the_field: type_of_the_field }
+          title: { type: new GraphQLNonNull(GraphQLString) },
+          artist: { type: new GraphQLNonNull(GraphQLString) },
+          year: { type: new GraphQLNonNull(GraphQLInt) },
+          id: { type: new GraphQLNonNull(GraphQLInt) }
+      })
+});
+
+let createDiscMutationType = {
+  name: "CreateDiscMutation",
+  type: new GraphQLList(discType),
+  args:{              
+    input: { 
+      type: new GraphQLNonNull(CreateDiscType) }
+  },
+  resolve: (obj, {input}) => {
+      let newDisc = {
+        title: input.title,
+        artist: input.artist,
+        year: input.year,
+        id: input.id       
+      };      
+
+      // insertion
+      DiscsData.push(newDisc);
+      return DiscsData;
+  }    
+};
+
+let mutation = new GraphQLObjectType({
+  name: 'MutationType',
+   fields: () => ({
+     createDiscMutation: createDiscMutationType
+    })
+});
+
 let Schema = new GraphQLSchema({
- query: queryType,
- queryById: queryByIdType
+  query: queryType,
+  mutation: mutation,
 });
 
 export default Schema;

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Disc from './DiscComponent';
+import NewDisc from './NewDiscComponent';
 
 /* eslint-disable no-console */
 class DiscsPage extends Component { 
@@ -14,8 +15,11 @@ class DiscsPage extends Component {
         
         return (
             <div>
-            <h3>Your music store is here!</h3>
-            <Disc discs={this.props.data.discs} />
+                <h3>Your music store is here!</h3>
+                <Disc discs={this.props.data.discs} />
+                <div style={{paddingTop: '10px'}}>
+                    <NewDisc />
+                </div>
             </div>
         );
     }
@@ -41,7 +45,9 @@ DiscsPage.propTypes = {
 };
 
 
-export default graphql(CurrentDiscsForLayout)(DiscsPage);
+export default graphql(CurrentDiscsForLayout, {
+  options: { pollInterval: 1000 },
+})(DiscsPage);
 
 
 /* TODO: this will be used with the mutations

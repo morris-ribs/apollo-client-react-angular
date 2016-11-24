@@ -3,6 +3,7 @@ import { ApolloModule } from 'angular2-apollo';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
+import { FormsModule  } from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ const client = new ApolloClient({
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     ApolloModule.withClient(client)
   ],
   declarations: [ AppComponent, DiscsPageComponent ],

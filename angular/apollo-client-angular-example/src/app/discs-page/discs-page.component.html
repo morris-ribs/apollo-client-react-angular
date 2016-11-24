@@ -1,9 +1,15 @@
 <div *ngIf="discs && discs.length">
-    <h3>Your music store is here!</h3>
+    <h3>Your music store is here (in Angular)!</h3>
     <ul>
         <li *ngFor="let disc of discs">{{disc.title}} - {{disc.artist}} ({{disc.year}})</li>
-    </ul>
-    <div >
-        <!-- Area for mutation -->
-    </div>
+    </ul>    
+</div>
+<div>
+    <!-- Area for mutation -->
+     You can also create discs here : <br />
+    <input type="text" placeholder="Id" [(ngModel)]='id' />
+    <input type="text" placeholder="Title" [(ngModel)]='title' />
+    <input type="text" placeholder="Artist" [(ngModel)]='artist'  />
+    <input type="text" placeholder="Year" [(ngModel)]='year' />
+    <button (click)='btnAdd()'>Add</button>
 </div>

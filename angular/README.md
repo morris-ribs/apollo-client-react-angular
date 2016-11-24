@@ -13,7 +13,7 @@ $ npm install
 Then, start the app with the following command.
 
 ```
-# run the command
+# run the server
 $ ng serve
 ```
 

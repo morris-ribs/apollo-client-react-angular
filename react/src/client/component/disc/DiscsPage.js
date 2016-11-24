@@ -11,14 +11,14 @@ class DiscsPage extends Component {
     }
     
     render() {   
-        const discs =   this.props.data.discs;
+        const discs = this.props.data.discs;
         
         return (
             <div>
                 <h3>Your music store is here (in React)!</h3>
-                <Disc discs={this.props.data.discs} />
+                <Disc discs={discs} />
                 <div style={{paddingTop: '10px'}}>
-                    <NewDisc />
+                    <NewDisc data={this.props.data} />
                 </div>
             </div>
         );
@@ -45,29 +45,4 @@ DiscsPage.propTypes = {
 };
 
 
-export default graphql(CurrentDiscsForLayout, {
-  options: { pollInterval: 1000 },
-})(DiscsPage);
-
-
-/* TODO: this will be used with the mutations
-const withData = graphql(CurrentDiscsForLayout,{
-  options: props => ({
-    forceFetch: true,
-  }),
-  props: ({ data: { discs, fetchMore } }) => ({
-    discs,
-    fetchMore: () => fetchMore({
-      variables: {
-        offset: discs.length,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) { return discs; }
-        return Object.assign({}, prev, {
-          discs: [...prev.discs, ...fetchMoreResult.data.discs],
-        });
-      },
-    }),
-  }),
-});
-*/
+export default graphql(CurrentDiscsForLayout)(DiscsPage);

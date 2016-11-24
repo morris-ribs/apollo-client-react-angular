@@ -45,6 +45,7 @@ class NewDiscComponent extends Component {
         this.props.mutate({ variables: { input: newDisc } })
             .then(({ data }) => {
                 console.log('got data', data);
+                this.props.data.refetch(); // refetch the data
             }).catch((error) => {
                 console.log('there was an error sending the query', error);
             });      
@@ -54,6 +55,7 @@ class NewDiscComponent extends Component {
         this.refs.newTitle.value = "";
         this.refs.newArtist.value = "";
         this.refs.newYear.value = "";
+        
         this.setState({id:"", title:"", artist:"", year:""});
     }    
     
@@ -74,7 +76,11 @@ class NewDiscComponent extends Component {
 
 NewDiscComponent.propTypes = {
     mutate: PropTypes.func.isRequired,
-    newDisc: PropTypes.object
+    newDisc: PropTypes.object,
+    data: PropTypes.shape({
+        loading: PropTypes.bool.isRequired,
+        discs: PropTypes.array
+    })
 };
 
 const submitNewDisc = gql`

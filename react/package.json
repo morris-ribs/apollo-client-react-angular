@@ -4,9 +4,8 @@
   "description": "React with Apollo Client",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel open:client run:server lint:watch",
+    "start": "npm-run-all --parallel open:client lint:watch",
     "open:client": "babel-node ./src/client/client.js",
-    "run:server": "babel-node ./src/server/server.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint --watch"
   },

@@ -1,0 +1,9 @@
+<div *ngIf="discs && discs.length">
+    <h3>Your music store is here!</h3>
+    <ul>
+        <li *ngFor="let disc of discs">{{disc.title}} - {{disc.artist}} ({{disc.year}})</li>
+    </ul>
+    <div >
+        <!-- Area for mutation -->
+    </div>
+</div>

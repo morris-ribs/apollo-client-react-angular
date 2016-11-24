@@ -15,7 +15,7 @@ class DiscsPage extends Component {
         
         return (
             <div>
-                <h3>Your music store is here!</h3>
+                <h3>Your music store is here (in React)!</h3>
                 <Disc discs={this.props.data.discs} />
                 <div style={{paddingTop: '10px'}}>
                     <NewDisc />

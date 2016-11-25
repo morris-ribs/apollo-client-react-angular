@@ -1,4 +1,5 @@
-# redux-graphql-materialui [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# redux-graphql-materialui 
+
 > This app was done using React Redux (from electrode) GraphQL (Apollo Client) and Material UI
 
 ## Installation

@@ -1,18 +1,18 @@
 # redux-graphql-materialui [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> My client using React Redux GraphQL and Material UI
+> This app was done using React Redux (from electrode) GraphQL (Apollo Client) and Material UI
 
 ## Installation
 
 ```sh
-$ npm install --save redux-graphql-materialui
+$ npm install
 ```
 
 ## Usage
 
-```js
-var reduxGraphqlMaterialui = require('redux-graphql-materialui');
+Browse the application folder from a terminal and run the following command
 
-reduxGraphqlMaterialui('Rainbow');
+```sh
+$ gulp dev
 ```
 ## License
 

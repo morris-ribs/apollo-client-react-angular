@@ -1,0 +1,4 @@
+{
+  "extends": "./node_modules/electrode-archetype-react-app/config/babel/.babelrc",
+  "presets": ["es2015", "stage-0", "react"]
+}

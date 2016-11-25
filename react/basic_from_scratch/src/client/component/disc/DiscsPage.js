@@ -27,7 +27,7 @@ class DiscsPage extends Component {
 
 // We use the gql tag to parse our query string into a query document
 const CurrentDiscsForLayout = gql`
-  query CurrentDiscsForLayout {
+  {
       discs {
           title
           artist
